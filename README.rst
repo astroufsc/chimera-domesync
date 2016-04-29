@@ -1,56 +1,46 @@
-chimera-template plugin
+chimera-domesync plugin
 =======================
 
-This is a template plugin for the chimera observatory control system
-https://github.com/astroufsc/chimera.
+This plugin creates a meta-dome, which acts like a normal dome, but translates the azimuth of the telescope to the real
+azimuth which the dome must be positioned to have the telescope placed right on the dome slit.
 
 Usage
 -----
 
-Rename chimera_template for your plugin name. It is important that the plugin
-name must start with chimera\_ to be found by chimera. Instruments and
-controllers must follow the standard ``chimera_(plugin_name)/(instruments|controllers)/(plugin).py``
+This plugin needs the geometrical parameters of the dome-telescope configuration. These parameters are ``dome_radius``,
+``mount_dec_height``, ``mount_dec_length`` and ``mount_dec_offset``. Which are R, Zdome0, r and Xdome0, respectively:
 
-The class inside ``(plugin).py`` should be named Plugin (with CamelCase letters).
 
-For more info: https://github.com/astroufsc/chimera/blob/master/docs/site/chimerafordevs.rst#chimera-objects
+.. image:: https://github.com/astroufsc/chimera-domesync/raw/master/docs/DomeSynchronisation.png
 
 
 Installation
 ------------
 
-Installation instructions. Dependencies, etc...
+To install `chimera-domesync` plugin, run:
 
 ::
 
-   pip install -U chimera_template
-
-or
-
-::
-
-    pip install -U git+https://github.com/astroufsc/chimera-template.git
+    pip install -U git+https://github.com/astroufsc/chimera-domesync.git
 
 
 Configuration Example
 ---------------------
 
-Here goes an example of the configuration to be added on ``chimera.config`` file.
+The configuration must follow the example, where the meta-instrument ``DomeSync`` must be the first dome on the domes
+configuration parameter.
 
 ::
 
-    instrument:
-        name: model
-        type: Example
+    domes:
+      - name: ds
+        type: DomeSync
+        dome: /FakeDome/fake
 
-
-Tested Hardware (for instruments)
----------------------------------
-
-This plugin was tested on these hardware:
-
-* Hardware example 1, model 2
-* Hardware example 2, model 3
+      - name: fake
+        type: FakeDome
+        mode: track
+        telescope: False
 
 
 Contact
@@ -60,4 +50,4 @@ For more information, contact us on chimera's discussion list:
 https://groups.google.com/forum/#!forum/chimera-discuss
 
 Bug reports and patches are welcome and can be sent over our GitHub page:
-https://github.com/astroufsc/chimera-template/
+https://github.com/astroufsc/chimera-domesync/
