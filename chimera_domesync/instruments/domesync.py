@@ -12,7 +12,7 @@ class DomeSync(DomeBase):
         'dome': None,
         'site': '/Site/0',
         'telescope': '/Telescope/0',
-        'az_resolution': None,
+        'az_resolution': 1,
         "dome_radius": 147,
         "mount_dec_height": 0,
         "mount_dec_length": 49.2,
@@ -76,4 +76,4 @@ class DomeSync(DomeBase):
         return self._getDome().isFlapOpen()
 
     def getMetadata(self, request):
-        return self._getDome().getMetadata()
+        return self._getDome().getMetadata(request)

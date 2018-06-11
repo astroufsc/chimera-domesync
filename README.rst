@@ -1,8 +1,8 @@
 chimera-domesync plugin
 =======================
 
-This plugin creates a meta-dome, which acts like a normal dome, but translates the azimuth of the telescope to the real
-azimuth which the dome must be positioned to have the telescope placed right on the dome slit.
+This plugin creates a meta-dome, which acts like a normal dome, but translates the azimuth of a german equatorial mount
+ to the dome azimuth to have the telescope placed right on the dome slit.
 
 Usage
 -----
